@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowlyVA</title>
+    <!-- إضافة خطوط من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        /* تحديد الخطوط المختلفة لكل لغة */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            font-family: 'Roboto', sans-serif;
+            /* الخط الافتراضي للإنجليزية */
+        }
+        /* تنسيق النصوص العربية */
+        
+        body[lang="ar"] {
+            font-family: 'Amiri', serif;
+            /* الخط المخصص للعربية */
+        }
+        
+        .banner {
+            height: 200px;
+            background-image: url('Meowlyva_banne.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        h2 {
+            color: white;
+        }
+        
+        .social-links {
+            position: absolute;
+            top: 450px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            background-color: #2c3e50;
+            padding: 10px 20px;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-links a:hover {
+            background-color: #1ca89d;
+            color: black;
+            transform: scale(1.1);
+        }
+        
+        .social-links a:active {
+            transform: scale(0.95);
+        }
+        /* Glowing Button Styling */
+        
+        .glowing-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 30px;
+            background-color: #1ca89d;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(10, 80, 138, 0.7);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .glowing-button:hover {
+            box-shadow: 0 0 30px rgb(6, 33, 153);
+        }
+        
+        .glowing-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="banner"></div>
+
+    <H2>عندي درس دلوقت حخلص و اكمل</H2>
+</body>
+
+</html>
