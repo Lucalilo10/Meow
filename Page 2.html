@@ -6,25 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowlyVA</title>
-    <!-- إضافة خطوط من Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Roboto&display=swap" rel="stylesheet">
+    <!-- Include Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Amiri:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* تحديد الخطوط المختلفة لكل لغة */
+        /* General Body Styling */
         
-      body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    font-family: 'Roboto', sans-serif;
-    /* الخط الافتراضي للإنجليزية */
-}
-        /* تنسيق النصوص العربية */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+        /* Language Specific Fonts */
+        
+        body[lang="en"] {
+            font-family: 'Poppins', sans-serif;
+        }
         
         body[lang="ar"] {
             font-family: 'Amiri', serif;
-            /* الخط المخصص للعربية */
         }
+        /* General Text Styling */
+        
+        h2,
+        p,
+        b,
+        a {
+            color: white;
+        }
+        /* Banner Section */
         
         .banner {
             height: 200px;
@@ -33,10 +43,7 @@
             background-repeat: no-repeat;
             background-position: center;
         }
-        
-        h2 {
-            color: white;
-        }
+        /* Social Links Styling */
         
         .social-links {
             position: absolute;
@@ -50,7 +57,7 @@
         }
         
         .social-links a {
-            background-color: #2c3e50;
+            background-color: #c41955;
             padding: 10px 20px;
             color: white;
             font-size: 18px;
@@ -61,8 +68,8 @@
         }
         
         .social-links a:hover {
-            background-color: #1ca89d;
-            color: black;
+            background-color: #a51547;
+            color: white;
             transform: scale(1.1);
         }
         
@@ -95,16 +102,45 @@
     </style>
 </head>
 
-<body>
+<body lang="ar">
 
     <div class="banner"></div>
 
     <div class="social-links">
-        <a href="Do i Know Meow.html">Do i know Meow ??</a>
-        <a href="">soon</a>
-        <a href="">soon</a>
-        <a href="">soon</a>
+        <a href="Do i Know Meow.html" lang="en">Do I Know Meow ??</a>
+        <a href="#">Soon</a>
+        <a href="#">Soon</a>
+        <a href="#">Soon</a>
     </div>
+    <audio id="clickSound" preload="auto"></audio>
+
+    <script>
+        const sounds = [
+            'استنوني.ogg',
+            'اوكي باي.ogg',
+            'ايه القرف ده.ogg',
+            'شكلي كذر.ogg',
+            'ضربة النسيان.ogg',
+            'ضيعت فلوسي.ogg',
+            'كلام ملهلب.ogg',
+            'لااااا.ogg',
+            'ماااء.ogg',
+            'مش بعرف العب.ogg',
+            'و عملنا سبيدر مان.ogg',
+            'وشك ولله وشك.ogg',
+            'يا فلاح.ogg',
+            'يا فلاحييين.ogg'
+        ];
+
+        const banner = document.querySelector('.banner');
+
+        banner.addEventListener('click', function() {
+            const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+            const clickSound = document.getElementById('clickSound');
+            clickSound.src = randomSound;
+            clickSound.play();
+        });
+    </script>
 </body>
 
 </html>
