@@ -1,146 +1,189 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeowlyVA</title>
-    <!-- Include Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Amiri:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MeowlyVA</title>
+        <!-- Include Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Amiri:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* General Body Styling */
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-        }
-        /* Language Specific Fonts */
-        
-        body[lang="en"] {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        body[lang="ar"] {
-            font-family: 'Amiri', serif;
-        }
-        /* General Text Styling */
-        
-        h2,
-        p,
-        b,
-        a {
-            color: white;
-        }
-        /* Banner Section */
-        
-        .banner {
-            height: 200px;
-            background-image: url('Meowlyva_banne.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        /* Social Links Styling */
-        
-        .social-links {
-            position: absolute;
-            top: 450px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .social-links a {
-            background-color: #c41955;
-            padding: 10px 20px;
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-        
-        .social-links a:hover {
-            background-color: #a51547;
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        .social-links a:active {
-            transform: scale(0.95);
-        }
-        /* Glowing Button Styling */
-        
-        .glowing-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 15px 30px;
-            background-color: #1ca89d;
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 0 20px rgba(10, 80, 138, 0.7);
-            transition: box-shadow 0.3s ease;
-        }
-        
-        .glowing-button:hover {
-            box-shadow: 0 0 30px rgb(6, 33, 153);
-        }
-        
-        .glowing-button:active {
-            transform: scale(0.95);
-        }
-    </style>
-</head>
+        <style>
+            /* General Body Styling */
+            
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: black;
+            }
+            /* Language Specific Fonts */
+            
+            body[lang="en"] {
+                font-family: 'Poppins', sans-serif;
+            }
+            
+            body[lang="ar"] {
+                font-family: 'Amiri', serif;
+            }
+            /* General Text Styling */
+            
+            h2,
+            p,
+            b,
+            a {
+                color: white;
+            }
+            /* Banner Section */
+            
+            .banner {
+                height: 200px;
+                background-image: url('Meowlyva_banne.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            /* Social Links Styling */
+            
+            .social-links {
+                position: absolute;
+                top: 450px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .social-links a {
+                background-color: #c41955;
+                padding: 10px 20px;
+                color: white;
+                font-size: 18px;
+                text-decoration: none;
+                border-radius: 25px;
+                transition: background-color 0.3s, transform 0.3s;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+            
+            .social-links a:hover {
+                background-color: #a51547;
+                color: white;
+                transform: scale(1.1);
+            }
+            
+            .social-links a:active {
+                transform: scale(0.95);
+            }
+            /* Glowing Button Styling */
+            
+            .glowing-button {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 15px 30px;
+                background-color: #1ca89d;
+                color: white;
+                font-size: 18px;
+                text-decoration: none;
+                border-radius: 50px;
+                box-shadow: 0 0 20px rgba(10, 80, 138, 0.7);
+                transition: box-shadow 0.3s ease;
+            }
+            
+            .glowing-button:hover {
+                box-shadow: 0 0 30px rgb(6, 33, 153);
+            }
+            
+            .glowing-button:active {
+                transform: scale(0.95);
+            }
+            
+            .invisible-button {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+            
+            .invisible-button-2 {
+                position: fixed;
+                bottom: 140px;
+                left: 950px;
+                width: 50px;
+                height: 50px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+            
+            .invisible-button-3 {
+                position: fixed;
+                bottom: 360px;
+                left: 30px;
+                width: 50px;
+                height: 50px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
 
-<body lang="ar">
+    <body lang="ar">
 
-    <div class="banner"></div>
+        <div class="banner"></div>
 
-    <div class="social-links">
-        <a href="Do i Know Meow.html" lang="en">Do I Know Meow ??</a>
-        <a href="Gojo.jpg">Soon</a>
-        <a href="Gojo.jpg">Soon</a>
-        <a href="Gojo.jpg">Soon</a>
-    </div>
-    <audio id="clickSound" preload="auto"></audio>
+        <b style="color: black; font-size: 25px; position: absolute; left: 30px; bottom: 200px;">Subscribe Me To My Youtube Channel : Lucalilo10</b>
+        <a href="Far From Jahanam.jpg">
+            <button class="invisible-button-2" onclick="window.location.href='';"></button>
+        </a>
+        <a href="dylan yagami.jpg">
+            <button class="invisible-button" onclick="window.location.href='';"></button>
+        </a>
+        <a href="Haaaa.jpg">
+            <button class="invisible-button-3" onclick="window.location.href='';"></button>
+        </a>
+        <div class="social-links">
+            <a href="Do i Know Meow.html" lang="en">Do I Know Meow ??</a>
+            <a href="Gojo.jpg">Soon</a>
+            <a href="Gojo.jpg">Soon</a>
+            <a href="Gojo.jpg">Soon</a>
+        </div>
+        <audio id="clickSound" preload="auto"></audio>
 
-    <script>
-        const sounds = [
-            'استنوني.ogg',
-            'اوكي باي.ogg',
-            'ايه القرف ده.ogg',
-            'شكلي كذر.ogg',
-            'ضربة النسيان.ogg',
-            'ضيعت فلوسي.ogg',
-            'كلام ملهلب.ogg',
-            'لااااا.ogg',
-            'ماااء.ogg',
-            'مش بعرف العب.ogg',
-            'و عملنا سبيدر مان.ogg',
-            'وشك ولله وشك.ogg',
-            'يا فلاح.ogg',
-            'يا فلاحييين.ogg'
-        ];
+        <script>
+            const sounds = [
+                'استنوني.ogg',
+                'اوكي باي.ogg',
+                'ايه القرف ده.ogg',
+                'شكلي كذر.ogg',
+                'ضربة النسيان.ogg',
+                'ضيعت فلوسي.ogg',
+                'كلام ملهلب.ogg',
+                'لااااا.ogg',
+                'ماااء.ogg',
+                'مش بعرف العب.ogg',
+                'و عملنا سبيدر مان.ogg',
+                'وشك ولله وشك.ogg',
+                'يا فلاح.ogg',
+                'يا فلاحييين.ogg'
+            ];
 
-        const banner = document.querySelector('.banner');
+            const banner = document.querySelector('.banner');
 
-        banner.addEventListener('click', function() {
-            const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
-            const clickSound = document.getElementById('clickSound');
-            clickSound.src = randomSound;
-            clickSound.play();
-        });
-    </script>
-</body>
+            banner.addEventListener('click', function() {
+                const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+                const clickSound = document.getElementById('clickSound');
+                clickSound.src = randomSound;
+                clickSound.play();
+            });
+        </script>
+    </body>
 
-</html>
+    </html>
