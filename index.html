@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeowlyVA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Amiri&display=swap" rel="stylesheet">
-
+    <title>MeowlyVA | الملهلبة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #ca1957;
+            --secondary-color: #920534;
+            --accent-color: #ff6b9e;
+            --dark-bg: #0a0a0a;
+            --text-color: #ffffff;
+            --text-secondary: #e0e0e0;
+            --neon-glow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color), 0 0 30px var(--accent-color);
+        }
+
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        body[lang="ar"] {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
             font-family: 'Amiri', serif;
+            background-image: radial-gradient(circle at 10% 20%, rgba(202, 25, 87, 0.1) 0%, rgba(10, 10, 10, 1) 90%);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        
+
         h1,
         h2,
         p,
@@ -30,116 +39,401 @@
             padding: 0;
             font-family: inherit;
         }
-        
+
         .banner {
-            height: 200px;
+            height: 300px;
             background-image: url('Meowlyva_banne.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(202, 25, 87, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        
-        .social-links {
+
+        .banner::before {
+            content: '';
             position: absolute;
-            top: 450px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
             z-index: 1;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
         }
-        
-        .social-links a {
-            background-color: #c41955;
-            padding: 10px 20px;
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+        .banner:hover {
+            transform: scale(1.01);
+            box-shadow: 0 15px 40px rgba(202, 25, 87, 0.5);
         }
-        
-        .social-links a:hover {
-            background-color: #a51547;
-            color: white;
-            transform: scale(1.1);
+
+        .banner:active {
+            transform: scale(0.99);
         }
-        
-        .social-links a:active {
-            transform: scale(0.95);
-        }
-        
-        .glowing-button {
-            position: fixed;
+
+        .banner-text {
+            position: absolute;
             bottom: 20px;
             right: 20px;
-            padding: 15px 30px;
-            background-color: #ca1957;
             color: white;
-            font-size: 18px;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .content-section {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: -90px auto 20px;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .avatar:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 15px 35px rgba(202, 25, 87, 0.6);
+            filter: drop-shadow(var(--neon-glow));
+        }
+
+        .username {
+           text-align: center;
+           font-size: 2.5rem;
+           margin-bottom: 30px;
+           color: var(--accent-color);
+           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+           position: relative;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--text-color), 0 0 10px var(--primary-color); }
+            to { text-shadow: 0 0 10px var(--text-color), 0 0 20px var(--primary-color), 0 0 30px var(--accent-color); }
+        }
+
+        .username::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), transparent);
+            margin: 10px auto;
+        }
+
+        .fun-text {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            padding: 20px;
+            background-color: rgba(20, 20, 20, 0.7);
+            border-radius: 15px;
+            border-left: 3px solid var(--primary-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fun-text::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color), var(--primary-color));
+            background-size: 400%;
+            border-radius: 15px;
+            opacity: 0;
+            transition: 0.5s;
+            animation: animate 20s linear infinite;
+        }
+
+        .fun-text:hover::before {
+            opacity: 1;
+            filter: blur(5px);
+        }
+
+        @keyframes animate {
+            0% { background-position: 0 0; }
+            50% { background-position: 300% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        .fun-text:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(202, 25, 87, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .social-links a {
+            background-color: var(--primary-color);
+            padding: 12px 25px;
+            color: white;
+            font-size: 1.1rem;
             text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 0 20px #c20044;
-            transition: box-shadow 0.3s ease;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(202, 25, 87, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .glowing-button:hover {
-            box-shadow: 0 0 50px #920534;
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
         }
-        
-        .glowing-button:active {
-            transform: scale(0.95);
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(202, 25, 87, 0.6);
         }
-        
-        .invisible-button {
+
+        .social-links a:hover::before {
+            left: 100%;
+        }
+
+        .social-links a:active {
+            transform: translateY(1px);
+        }
+
+        .action-button {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 0 20px var(--primary-color);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: float 3s ease-in-out infinite;
         }
-        
-        .invisible-button-2 {
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .action-button:hover {
+            box-shadow: 0 0 30px var(--accent-color);
+            transform: translateX(5px);
+            animation: none;
+        }
+
+        .action-button:active {
+            transform: scale(0.95);
+        }
+
+        .hidden-button {
             position: fixed;
-            bottom: 140px;
-            left: 950px;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: transparent;
             border: none;
             cursor: pointer;
+            transition: all 0.3s;
+            z-index: 100;
+            opacity: 0.3;
+        }
+
+        .hidden-button:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .hidden-button:active {
+            transform: scale(0.9);
+        }
+
+        .button-1 {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .button-2 {
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .floating-cats {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .cat {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+            transition: all 0.5s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-color);
+            opacity: 0;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .meow-message {
+            position: fixed;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .banner {
+                height: 200px;
+            }
+
+            .avatar-container {
+                width: 140px;
+                height: 140px;
+                margin-top: -70px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .username {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 
-<body lang="ar">
-    <div class="banner"></div>
-    <h2>Click on the banner</h2>
-    <h2 style="margin-left: 20px;">آسف لو الألوان</h2>
-    <h2 style="margin-left: 20px;">مش حلوة</h2>
-    <h2 style="margin-left: 20px;">بس أنا عندي عمى ألوان</h2>
-    <h1 style="color: black; margin-left: 20px;">اتاك عمك</h1>
-    <a href="riner.jpg">
-        <img style="border-radius: 50%; width: 150px; height: 150px; position: absolute; top: 220px; left: 600px; z-index: 1;" src="https://creatorspace.imgix.net/users/clx1awiby060nno01uxqorvea/Xf9uTAqf8hYxS4zW-300k%2520(4).png?w=300&amp;h=300" alt="avatar">
-    </a>
-    <h2 style="position: absolute; top: 375px; left: 650px; color: white; z-index: 1"> الملهلبة </h2>
+<body>
+    <div class="banner">
+        <div class="banner-text">اضغط على البانر 🔊</div>
+    </div>
 
-    <div class="social-links">
-        <a href="https://www.youtube.com/@MeowlyVA" target="_blank">YouTube</a>
-        <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqblRxVENQRGxVZ0V6dUdSbUhqeHBhbWdEbXNWd3xBQ3Jtc0ttWllRUXhMRFZJVkRWVVhRY3k1ZGkyTFducHVxallKOE12RjBteTZfM0RndGRLTEg4anNtY3JqUnI3SGF2LS14bERucll5VG85TnpNWS0xaldrc1BZelpaalQ1blN5dW42TWpQX1dKZ05lZ1JKMVZnYw&q=https%3A%2F%2Fdiscord.com%2Finvite%2Fmeowlyva"
-            target="_blank">Discord</a>
-        <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqa0RTbUp6XzlyTTl3aDRhQThkenJxT2hlVXRSUXxBQ3Jtc0trc0xhaFE2c0EtNHZfbEJjUFFzZFlZMGV2OGl0NGxuYzFobHd4VUF5dGt4OUlXclVJSkNQUGwzWm9pdDRudGNrcG5rNXV1NjFud09Zd1dVSFZwc05fUWJRV2ttTFotcC0xN1preHYzcC1sN0ZBemhfUQ&q=https%3A%2F%2Fwww.tiktok.com%2F%40meowlyva"
-            target="_blank">TikTok</a>
-        <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqa0RTbUp6XzlyTTl3aDRhQThkenJxT2hlVXRSUXxBQ3Jtc0trc0xhaFE2c0EtNHZfbEJjUFFzZFlZMGV2OGl0NGxuYzFobHd4VUF5dGt4OUlXclVJSkNQUGwzWm9pdDRudGNrcG5rNXV1NjFud09Zd1dVSFZwc05fUWJRV2ttTFotcC0xN1preHYzcC1sN0ZBemhfUQ&q=https%3A%2F%2Fwww.tiktok.com%2F%40meowlyva"
-            target="_blank">Instagram</a>
+    <div class="floating-cats">
+        <div class="cat" style="top: 10%; left: 5%; font-size: 30px;">🐱</div>
+        <div class="cat" style="top: 30%; left: 80%; font-size: 40px;">🐈</div>
+        <div class="cat" style="top: 70%; left: 15%; font-size: 25px;">😺</div>
+        <div class="cat" style="top: 50%; left: 70%; font-size: 35px;">🐾</div>
+    </div>
+
+    <div class="content-section">
+        <div class="avatar-container">
+            <a href="riner.jpg">
+                <img class="avatar" src="https://creatorspace.imgix.net/users/clx1awiby060nno01uxqorvea/Xf9uTAqf8hYxS4zW-300k%2520(4).png?w=300&amp;h=300" alt="MeowlyVA Avatar">
+            </a>
+        </div>
+
+        <h1 class="username">الملهلبة</h1>
+
+        <div class="fun-text">
+            <p>آسف لو الألوان مش حلوة</p>
+            <p>بس أنا عندي عمى ألوان</p>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.youtube.com/@MeowlyVA" target="_blank">
+                <i class="fab fa-youtube"></i> يوتيوب
+            </a>
+            <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqblRxVENQRGxVZ0V6dUdSbUhqeHBhbWdEbXNWd3xBQ3Jtc0ttWllRUXhMRFZJVkRWVVhRY3k1ZGkyTFducHVxallKOE12RjBteTZfM0RndGRLTEg4anNtY3JqUnI3SGF2LS14bERucll5VG85TnpNWS0xaldrc1BZelpaalQ1blN5dW42TWpQX1dKZ05lZ1JKMVZnYw&q=https%3A%2F%2Fdiscord.com%2Finvite%2Fmeowlyva" target="_blank">
+                <i class="fab fa-discord"></i> ديسكورد
+            </a>
+            <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqa0RTbUp6XzlyTTl3aDRhQThkenJxT2hlVXRSUXxBQ3Jtc0trc0xhaFE2c0EtNHZfbEJjUFFzZFlZMGV2OGl0NGxuYzFobHd4VUF5dGt4OUlXclVJSkNQUGwzWm9pdDRudGNrcG5rNXV1NjFud09Zd1dVSFZwc05fUWJRV2ttTFotcC0xN1preHYzcC1sN0ZBemhfUQ&q=https%3A%2F%2Fwww.tiktok.com%2F%40meowlyva" target="_blank">
+                <i class="fab fa-tiktok"></i> تيك توك
+            </a>
+            <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqa0RTbUp6XzlyTTl3aDRhQThkenJxT2hlVXRSUXxBQ3Jtc0trc0xhaFE2c0EtNHZfbEJjUFFzZFlZMGV2OGl0NGxuYzFobHd4VUF5dGt4OUlXclVJSkNQUGwzWm9pdDRudGNrcG5rNXV1NjFud09Zd1dVSFZwc05fUWJRV2ttTFotcC0xN1preHYzcC1sN0ZBemhfUQ&q=https%3A%2F%2Fwww.tiktok.com%2F%40meowlyva" target="_blank">
+                <i class="fab fa-instagram"></i> إنستجرام
+            </a>
+        </div>
     </div>
 
     <audio id="clickSound" preload="auto"></audio>
+
+    <a href="Page 2.html" class="action-button">
+        التالي <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <a href="Levi.jpg">
+        <button class="hidden-button button-1"></button>
+    </a>
+
+    <a href="gojo.jpg">
+        <button class="hidden-button button-2"></button>
+    </a>
 
     <script>
         const sounds = [
@@ -160,23 +454,148 @@
         ];
 
         const banner = document.querySelector('.banner');
+        const avatar = document.querySelector('.avatar');
+        const funText = document.querySelector('.fun-text');
+        const cats = document.querySelectorAll('.cat');
+        const socialLinks = document.querySelectorAll('.social-links a');
 
+        // Banner click sound
         banner.addEventListener('click', function() {
             const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
             const clickSound = document.getElementById('clickSound');
             clickSound.src = randomSound;
             clickSound.play();
+
+            // Add a temporary animation
+            banner.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                banner.style.transform = 'scale(1)';
+            }, 200);
+
+            // Create confetti effect
+            createConfetti();
         });
+
+        // Avatar hover effect
+        avatar.addEventListener('mouseover', function() {
+            this.style.animation = 'float 3s ease-in-out infinite';
+        });
+
+        avatar.addEventListener('mouseout', function() {
+            this.style.animation = 'none';
+        });
+
+        // Fun text hover effect
+        funText.addEventListener('mouseenter', function() {
+            cats.forEach(cat => {
+                cat.style.opacity = '0.5';
+                cat.style.transform = 'scale(1.5)';
+            });
+        });
+
+        funText.addEventListener('mouseleave', function() {
+            cats.forEach(cat => {
+                cat.style.opacity = '0.1';
+                cat.style.transform = 'scale(1)';
+            });
+        });
+
+        // Social links hover effect
+        socialLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                const randomCat = cats[Math.floor(Math.random() * cats.length)];
+                randomCat.style.opacity = '0.8';
+                randomCat.style.transform = 'scale(2)';
+                setTimeout(() => {
+                    randomCat.style.opacity = '0.1';
+                    randomCat.style.transform = 'scale(1)';
+                }, 1000);
+            });
+        });
+
+        // Easter egg - change background color on secret click
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'm') {
+                document.body.style.backgroundColor = '#1a1a2e';
+                setTimeout(() => {
+                    document.body.style.backgroundColor = 'var(--dark-bg)';
+                }, 1000);
+                showMeowMessage('MEOW!', e.clientX, e.clientY);
+            }
+        });
+
+        // Create confetti effect
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.backgroundColor = getRandomColor();
+                document.body.appendChild(confetti);
+
+                const animationDuration = Math.random() * 3 + 2;
+
+                confetti.style.animation = `confetti-fall ${animationDuration}s linear forwards`;
+                confetti.style.opacity = '1';
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, animationDuration * 1000);
+            }
+
+            // Add keyframes dynamically
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes confetti-fall {
+                    0% {
+                        transform: translateY(-100px) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(${window.innerHeight}px) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff6b9e', '#ca1957', '#920534', '#ff9eb7', '#ff3d7f'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function showMeowMessage(text, x, y) {
+            const message = document.createElement('div');
+            message.className = 'meow-message';
+            message.textContent = text;
+            message.style.left = x + 'px';
+            message.style.top = y + 'px';
+            document.body.appendChild(message);
+
+            setTimeout(() => {
+                message.style.opacity = '1';
+                message.style.transform = 'translateY(0)';
+            }, 10);
+
+            setTimeout(() => {
+                message.style.opacity = '0';
+                message.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    message.remove();
+                }, 300);
+            }, 2000);
+        }
+
+        // Random cat animations
+        setInterval(() => {
+            cats.forEach(cat => {
+                if (Math.random() > 0.7) {
+                    cat.style.transform = `translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px) rotate(${Math.random() * 360}deg)`;
+                }
+            });
+        }, 3000);
     </script>
-
-    <a href="Page 2.html" class="glowing-button">Next --> </a>
-
-    <a href="Levi.jpg">
-        <button class="invisible-button" onclick="window.location.href='';"></button>
-    </a>
-    <a href="Gojo.jpg">
-        <button class="invisible-button-2" onclick="window.location.href='';"></button>
-    </a>
 </body>
 
 </html>
